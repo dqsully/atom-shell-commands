@@ -6,11 +6,11 @@
                 {
                     "label": "Atom Shell Commands",
                     "submenu": [
-                        { "label": "Stop Command", "command": "atom-shell-commands-config:stop" },
-                        { "label": "Go To First Error", "command": "atom-shell-commands-config:error-first" },
-                        { "label": "Go To Last Error", "command": "atom-shell-commands-config:error-last" },
-                        { "label": "Go To Next Error", "command": "atom-shell-commands-config:error-next" },
-                        { "label": "Go To Prev Error", "command": "atom-shell-commands-config:error-prev" },
+                        { "label": "Stop Command", "command": "dqs-shell-commands-config:stop" },
+                        { "label": "Go To First Error", "command": "dqs-shell-commands-config:error-first" },
+                        { "label": "Go To Last Error", "command": "dqs-shell-commands-config:error-last" },
+                        { "label": "Go To Next Error", "command": "dqs-shell-commands-config:error-next" },
+                        { "label": "Go To Prev Error", "command": "dqs-shell-commands-config:error-prev" },
                         { "type": "separator" }
                     ]
                 }
