@@ -1,5 +1,5 @@
 {
-  "name": "atom-shell-commands",
+  "name": "dqs-shell-commands",
   "version": "1.5.0",
   "description": "Customize shell commands. Similar to 'Run Commands' in NotePad++, 'User Tool' in EditPlus/UltraEdit, 'External Tool' in GEdit and 'Shell Commands' in TextMate.",
   "main": "./lib/atom-shell-commands",
@@ -13,53 +13,22 @@
     "command",
     "project"
   ],
-  "homepage": "https://github.com/skywind3000/atom-shell-commands",
+  "homepage": "https://github.com/dqsully/dqs-shell-commands",
   "dependencies": {
     "space-pen": "^4",
     "xregexp": "^2.0.0",
-    "atom-message-panel": "^1.2.4"
+    "atom-message-panel": "^1.2.4",
+    "season": "^5.0.0"
   },
   "author": {
-    "name": "skywind3000"
+    "name": "dqsully"
   },
-  "repository": "https://github.com/skywind3000/atom-shell-commands",
+  "repository": "https://github.com/dqsully/dqs-shell-commands",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "bugs": {
-    "url": "https://github.com/skywind3000/atom-shell-commands/issues"
-  },
-  "_atomModuleCache": {
-    "version": 1,
-    "dependencies": [
-      {
-        "name": "win-spawn",
-        "version": "2.0.0",
-        "path": "node_modules/win-spawn/index.js"
-      }
-    ],
-    "extensions": {
-      ".js": [
-        "lib/atom-shell-commands.js",
-        "node_modules/win-spawn/index.js"
-      ],
-      ".json": [
-        "node_modules/win-spawn/package.json",
-        "package.json"
-      ]
-    },
-    "folders": [
-      {
-        "paths": [
-          "lib",
-          "menus",
-          ""
-        ],
-        "dependencies": {
-          "win-spawn": "^2.0.0"
-        }
-      }
-    ]
+    "url": "https://github.com/dqsully/dqs-shell-commands/issues"
   }
 }
