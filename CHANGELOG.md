@@ -1,3 +1,10 @@
+## 2.0.0 - 2017/3/16
+* Forked from skywind3000
+* Added flags
+* Added project-based config files
+* Fixed line buffering issue
+* Fixed issues with escaping characters (hopefully)
+
 ## 1.5.0 - 2016/10/7
 * Fixed: options missing 'mode' issue (a new feature which is developing in progress)
 
@@ -13,7 +20,7 @@
 
 ## 1.3.13 - 2016/4/3
 * Fixed: spawn failed in windows when command name contains space (eg. 'C:/program files (x86)/xxx')
-* Remove 'win-spawn' module which is really out-of-date and use 'child_process.spawn' directly 
+* Remove 'win-spawn' module which is really out-of-date and use 'child_process.spawn' directly
 
 ## 1.3.10 - 2016/4/1
 * Adjust the style of bottom output panel, make it more neat now.
