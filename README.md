@@ -6,22 +6,23 @@ Customize shell commands for atom. Similar to 'Run Commands' in NotePad++, 'User
 
 Preface
 -------
-This package enables you to setup shell commands as atom commands. Shell output will be captured and display in the atom's bottom panel. If you create a command named 'gcc-build', you will find 'dqs-shell-commands:gcc-build' in the atom command palette, and then use keymap to setup a shortcut for it.
+This package enables you to setup shell commands as atom commands. Shell output will be captured and displayed in a panel at the bottom of the screen. If you create a command named 'gcc-build', you will find 'dqs-shell-commands:gcc-build' in the atom command palette, of which you can define a keymap to setup a shortcut for it.
 
-I was a window user and switched to Atom from EditPlus/Notepad++. Previously I wrote a script in EditPlus to compile-run my C/C++ programs and execute Makefiles with customizable compile flags and run options. Atom has numerous community packages and I have tried some. Most of them are really great in certain extent but still cannot fully satisfy my need. Therefore I decided to reference their packages and make my own.
+(From skywind3000): *"I was a window user and switched to Atom from EditPlus/Notepad++. Previously I wrote a script in EditPlus to compile-run my C/C++ programs and execute Makefiles with customizable compile flags and run options. Atom has numerous community packages and I have tried some. Most of them are really great in certain extent but still cannot fully satisfy my need. Therefore I decided to reference their packages and make my own.""*
 
 Feature
 -------
 
 - Customize shell command to invoke compiler or other tools with active document/project.
 - Customize arguments, working directory and system environment of the command.
-- Automatic create atom command for each shell command.
-- Keymap config allow you to make shortcut to each command.
+- Automatically create atom command for each shell command.
+- Keymap config allows you to make shortcut to each command.
 - Shell output (stdout/stderr) can be captured in the bottom panel.
 - Click the filename in the output panel will open it.
 - Regular expression to match filename and line number in the error output.
 - Hotkeys to navigate errors one by one just like quickfix in vim.
 - Fast and lightweight, loading time is less than 2 milliseconds (TimeCop).
+- Create different commands for each project if you like.
 
 Installation
 ------------
@@ -67,9 +68,9 @@ commands: [
 ```
 
 
-This will create the atom command "dqs-shell-commands:compile" that you can now launch from the command palette or use the binding keymap 'ctrl-2'. It also generates an entry in the Atom Shell Commands menu under packages. A certain command is represented by:
+This will create the atom command "dqs-shell-commands:compile" that you can now launch from the command palette or use the binding keymap 'ctrl-2'. It also generates an entry in the `DQ's Shell Commands` menu under `Packages`. Command entries have the following properties:
 
-| Field | Mode | Description |
+| Field | Requred | Description |
 |-------|----|---------|
 | `name` | **[required]** | The name of the target. Viewed in the menu |
 | `command` | **[required]** | The executable command (if not in terminal mode, can be a relative path to a file) |
@@ -80,14 +81,14 @@ This will create the atom command "dqs-shell-commands:compile" that you can now 
 
 The `command`, `arguments` and `options` values accepts the variables below:
 
-| Macros           | Description |
+| Macro            | Description |
 |------------------|-------------|
 | {FilePath}       | File name of current document with full path. |
 | {FileName}       | File name of current document without path. |
 | {FileDir}        | Full path of current document without the file name |
 | {FileExt}        | File extension of current document |
 | {FileNameNoExt}  | File name of current document without path and extension |
-| {ProjectDir} | Current project directory |
+| {ProjectDir}     | Current project directory |
 | {ProjectRel}     | File name relativize to current project directory |
 | {CurRow}         | Current row(line number) where the cursor is located |
 | {CurCol}         | Current column index where the cursor is located |
@@ -95,17 +96,17 @@ The `command`, `arguments` and `options` values accepts the variables below:
 | {CurLineText}    | Current line text under cursor |
 | {CurWord}        | Current word under cursor |
 
-You can setup as many commands as you wish to build with your project makefile, or compile a single source file directly, or compile your latex, or run grep in current directory, passing current word under cursor to external man help / dictionary / other external scripts, or just call svn diff with current file and redirect the output to the bottom panel.
+You can setup as many commands as you wish, for example: build with your project makefile, compile a single source file directly, compile your latex, run grep in current directory, pass the current word under the cursor to man or a dictionary, call svn diff with current file and redirect the output to the bottom panel.
 
 
-The `options` field is an key/value object contains:
+The `options` field can contain the following properties:
 
-| Options | Mode | Description |
+| Options | Required | Description |
 |---------|------|-------|
 | cwd | *[optional]* | Working directory of the command |
 | save | *[optional]* | True or false(default) to save the current file before execute |
-| silent | *[optional]* | True or false(default); true will not show the message panel (if it's closed) when this command is run. |
-| keymap | *[optional]* | A keymap string as defined by Atom. Pressing this key combination will trigger the target. Examples: ctrl-alt-k or cmd-U. |
+| silent | *[optional]* | True or false(default); true will not open the message panel when this command is run. |
+| keymap | *[optional]* | A keymap string as defined by Atom. Pressing this key combination will trigger the target. Examples: ctrl-alt-k or cmd-shift-U. |
 | env | *[optional]* | Key/value based system environment setting |
 | sound | *[optional]* | File path for a wav/mp3/ogg file which will be played to remind you that the job is finished |
 | context | *[optional]* | String of flags indicating which circumstances the command can be run under |
@@ -161,14 +162,6 @@ command 'runinwindow' config:
 }
 ```
 
-you need to write a batch file in windows to open a new window, here is source of launch.cmd:
-```
-@echo off
-%1
-pause
-exit
-```
-
 Lookup word in manual
 
 Current word under cursor can be passed to the external executables or scripts, you can use it to look up current word in dictionary or manual with a single hotkey stroke:
@@ -189,14 +182,14 @@ Current word under cursor can be passed to the external executables or scripts, 
 Error Matching
 --------------
 
-Error matching lets you specify a single regular expression or a list of regular expressions, which capture the output of your build command and open the correct file, row and column of the error. For instance:
+Error matching lets you specify one or more regular expressions which are matched the output of your build command, to open the matched file, row, and column of the reported error. For example:
 
 ```
 ztest_hello.cpp: In function 'int main()':
 ztest_hello.cpp:7:10: error: expected initializer before 'int'
 ```
 
-Would be matched with the expression: `^(?<file>[\\/0-9a-zA-Z\\._\\\\:]+):(?<line>\\d+):(?<col>\\d+):`. After the build has failed, click on the error output line, the file would be opened and the cursor would be placed at row 7, column 10.
+Would be matched with the expression: `^(?<file>[\\/0-9a-zA-Z\\._\\\\:]+):(?<line>\\d+):(?<col>\\d+):`. After the build has failed, if you were to click on the error output line, the file would be opened and the cursor would be placed at row 7, column 10.
 
 Note the syntax for match groups. This is from the [XRegExp](http://xregexp.com/) package
 and has the syntax for named groups: `(?<name> RE )` where `name` would be the name of the group
@@ -215,27 +208,27 @@ Example user config file which is using error matching:
 
 ```cson
 *:
-"dqs-shell-commands":
-  commands: [
-    {
-      name: "compile"
-      command: "d:/dev/mingw/bin/gcc"
-      arguments: [
-        "{FileName}"
-        "-o"
-        "{FileNameNoExt}.exe"
-      ]
-      matchs: [
-        "^(?<file>[\\/0-9a-zA-Z\\._\\\\:]+):(?<line>\\d+):(?<col>\\d+):"
-        "^(?<file>[\\/0-9a-zA-Z\\._\\\\:]+):(?<line>\\d+):"
-        "^(?<file>[\\/0-9a-zA-Z\\._\\\\:]+)\\s*\\((?<line>\\d+)\\)\\s*:*:"
-      ]
-      options:
-        cwd: "{FileDir}"
-        keymap: 'ctrl-2'
-        save: true
-    }
-  ]
+  "dqs-shell-commands":
+    commands: [
+      {
+        name: "compile"
+        command: "d:/dev/mingw/bin/gcc"
+        arguments: [
+          "{FileName}"
+          "-o"
+          "{FileNameNoExt}.exe"
+        ]
+        matchs: [
+          "^(?<file>[\\/0-9a-zA-Z\\._\\\\:]+):(?<line>\\d+):(?<col>\\d+):"
+          "^(?<file>[\\/0-9a-zA-Z\\._\\\\:]+):(?<line>\\d+):"
+          "^(?<file>[\\/0-9a-zA-Z\\._\\\\:]+)\\s*\\((?<line>\\d+)\\)\\s*:*:"
+        ]
+        options:
+          cwd: "{FileDir}"
+          keymap: 'ctrl-2'
+          save: true
+      }
+    ]
 ```
 
 This will match the `file`, `line` and `col` in both clang/gcc or msvc error output.
@@ -252,9 +245,9 @@ dqs-shell-commands has a special design in the output panel to speedup the edit-
 | dqs-shell-commands-config:error-next | go to the next error |
 | dqs-shell-commands-config:error-prev | go to the previous error |
 
-To avoid hotkey conflict to other packages, dqs-shell-commands has none predefined keymap, just leave the it to user. You can trigger them from `Atom Shell Commands` menu under `Packages`, or from command palette directly.
+To avoid hotkey conflict to other packages, dqs-shell-commands has no predefined keymaps, but you can define your own in `File->Keymap...`. You can also trigger these actions from `Atom Shell Commands` menu under `Packages`, or from command palette directly.
 
-The most efficient way is binding to your keymap config by simply adding few lines in ~/.atom/keymap.cson （or open it in the `File` menu):
+An example user keymap file:
 ```cson
 'atom-workspace':
     'F9' : 'dqs-shell-commands-config:error-next'
@@ -265,7 +258,7 @@ Now you can have your F9/F10 to navigate errors without leaving your hand from k
 
 Misc
 ----
-dqs-shell-commands has been tested in windows, mac os and ubuntu. You can use 'open' in mac os or '/usr/bin/gnome-terminal' in ubuntu to open a new window and execute your command.
+dqs-shell-commands has been tested in Windows, and previously in macOS and Ubuntu. You can use 'open' in macOS or '/usr/bin/gnome-terminal' in Ubuntu to open a new window and execute your command.
 
 As executing program in a new terminal window correctly is a little tricky thing, I create a script to let you open a new terminal window to execute your program in both Windows, Linux (ubuntu), Cygwin and Mac OS X, you can try it from: https://github.com/skywind3000/terminal.
 
