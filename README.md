@@ -1,6 +1,6 @@
 # DQ's Shell Commands package
 
-Originally adapted from skywind3000's [dqs-shell-commands](https://github.com/skywind3000/dqs-shell-commands) package
+Originally adapted from skywind3000's [atom-shell-commands](https://github.com/skywind3000/atom-shell-commands) package
 
 Customize shell commands for atom. Similar to 'Run Commands' in NotePad++, 'User Tool' in EditPlus/UltraEdit, 'External Tool' in GEdit and 'Shell Commands' in TextMate.
 
