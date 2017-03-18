@@ -13,7 +13,7 @@
     "command",
     "project"
   ],
-  "repository": "https://github.com/atom/dqs-shell-commands",
+  "repository": "https://github.com/dqsully/dqs-shell-commands",
   "homepage": "https://github.com/dqsully/dqs-shell-commands",
   "bugs": {
     "url": "https://github.com/dqsully/dqs-shell-commands/issues"
