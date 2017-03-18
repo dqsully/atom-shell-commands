@@ -109,7 +109,17 @@ The `options` field can contain the following properties:
 | keymap | *[optional]* | A keymap string as defined by Atom. Pressing this key combination will trigger the target. Examples: ctrl-alt-k or cmd-shift-U. |
 | env | *[optional]* | Key/value based system environment setting |
 | sound | *[optional]* | File path for a wav/mp3/ogg file which will be played to remind you that the job is finished |
+| file | *[optional]* | File path (relative or absolute) to copy the output of the command to |
+| mode | *[optional]* | Mode for starting the process |
 | context | *[optional]* | String of flags indicating which circumstances the command can be run under |
+
+The `options.mode` field string can be any of the following:
+
+| Type | Description |
+| `silent` | Same as setting `silent` option to true |
+| `terminal` | Opens the command in a separate window |
+| `window` | Same as `terminal` |
+| `open` | Same as `terminal` |
 
 The `options.context` field string can contain any of the following flags:
 
