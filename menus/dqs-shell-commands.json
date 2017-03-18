@@ -4,7 +4,7 @@
             "label": "Packages",
             "submenu": [
                 {
-                    "label": "Atom Shell Commands",
+                    "label": "DQ's Shell Commands",
                     "submenu": [
                         { "label": "Stop Command", "command": "dqs-shell-commands-config:stop" },
                         { "label": "Go To First Error", "command": "dqs-shell-commands-config:error-first" },
@@ -18,5 +18,3 @@
         }
     ]
 }
-
-
