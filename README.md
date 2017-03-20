@@ -31,7 +31,7 @@ Installation
 Setup
 -----
 
-Configure commands on your config file (`File->Config...`): (**NOTE:** This is finicky and may not work properly)
+Configure commands on your config file (`File->Config...`): (**NOTE:** This is *very* finicky and probably won't work properly)
 ```cson
 "dqs-shell-commands":
   commands: [
