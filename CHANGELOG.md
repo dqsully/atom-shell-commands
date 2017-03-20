@@ -1,3 +1,14 @@
+## 2.1.2 - 2017/3/19
+* Fix changing project directories
+* Change how the name of the project is show in the menu
+
+## 2.1.1 - 2017/3/19
+* Small fix for Quickfix
+
+## 2.1.0 - 2017/3/17
+* Implement some fixes
+* Add option to copy command output to a file
+
 ## 2.0.0 - 2017/3/16
 * Forked from skywind3000
 * Added flags
