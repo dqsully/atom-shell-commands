@@ -31,25 +31,8 @@ Installation
 Setup
 -----
 
-Configure commands on your config file (`File->Config...`): (**NOTE:** This is *very* finicky and probably won't work properly)
-```cson
-"dqs-shell-commands":
-  commands: [
-    {
-      name: "compile"
-      command: "d:/dev/mingw/bin/gcc"
-      arguments: [
-        "{FileName}"
-        "-o"
-        "{FileNameNoExt}.exe"
-      ]
-      options:
-        cwd: "{FileDir}"
-        keymap: 'ctrl-2'
-    }
-  ]
-```
-Or also in your project root `.shell-commands.cson`:
+***Note:*** *This package no longer uses your Atom Config File for settings. If you already have commands saved in your config file when you upgrade to 2.2.0 they should automatically be copied to the new `.global-shell-commands.cson`.*  
+You can configure commands per project with the `.shell-commands.cson` file in the project's root directory( or directories), or in the `~/.atom/.global-shell-commands.cson` file (which can be opened by clicking on `Packages->DQ's Shell Commands->Open Global Config`). Project-based command files will only be loaded if the parent folder is opened as a project folder, but the global config file will always be loaded.
 ```cson
 commands: [
   {
@@ -136,11 +119,11 @@ Examples
 
 Compiling with command 'gcc'
 
-![](https://github.com/skywind3000/dqs-shell-commands/blob/master/images/command_compile.png?raw=true)
+![](https://github.com/dqsully/dqs-shell-commands/blob/master/images/command_compile.png?raw=true)
 
 Running with command 'execute'
 
-![](https://github.com/skywind3000/dqs-shell-commands/blob/master/images/command_execute.png?raw=true)
+![](https://github.com/dqsully/dqs-shell-commands/blob/master/images/command_execute.png?raw=true)
 
 command 'execute' config:
 ```cson
@@ -154,7 +137,7 @@ command 'execute' config:
 
 Running in a new window
 
-![](https://github.com/skywind3000/dqs-shell-commands/blob/master/images/command_runinwindow.png?raw=true)
+![](https://github.com/dqsully/dqs-shell-commands/blob/master/images/command_runinwindow.png?raw=true)
 
 command 'runinwindow' config:
 ```cson

@@ -1,20 +1,21 @@
 {
-    "menu" : [
+  "menu" : [
+    {
+      "label": "Packages",
+      "submenu": [
         {
-            "label": "Packages",
-            "submenu": [
-                {
-                    "label": "DQ's Shell Commands",
-                    "submenu": [
-                        { "label": "Stop Command", "command": "dqs-shell-commands-config:stop" },
-                        { "label": "Go To First Error", "command": "dqs-shell-commands-config:error-first" },
-                        { "label": "Go To Last Error", "command": "dqs-shell-commands-config:error-last" },
-                        { "label": "Go To Next Error", "command": "dqs-shell-commands-config:error-next" },
-                        { "label": "Go To Prev Error", "command": "dqs-shell-commands-config:error-prev" },
-                        { "type": "separator" }
-                    ]
-                }
-            ]
+          "label": "DQ's Shell Commands",
+          "submenu": [
+            { "label": "Open Global Config", "command": "dqs-shell-commands-config:open-global" },
+            { "label": "Stop Command", "command": "dqs-shell-commands-config:stop" },
+            { "label": "Go To First Error", "command": "dqs-shell-commands-config:error-first" },
+            { "label": "Go To Last Error", "command": "dqs-shell-commands-config:error-last" },
+            { "label": "Go To Next Error", "command": "dqs-shell-commands-config:error-next" },
+            { "label": "Go To Prev Error", "command": "dqs-shell-commands-config:error-prev" },
+            { "type": "separator" }
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }
