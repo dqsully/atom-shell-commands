@@ -1,3 +1,14 @@
+# 2.2.2 - 2017/3/25
+* Fix the output from a program which uses both stdout and stderr
+
+# 2.2.1 - 2017/3/21
+* Fix a typo involved with the new config
+
+## 2.2.0 - 2017/3/20
+* Switch from putting global commands in `config.cson` to a new `.global-shell-commands.cson` file
+* Add a menu item to easily open the new config file
+* Copy the user's configuration from `config.cson` to `.global-shell-commands.cson`
+
 ## 2.1.2 - 2017/3/19
 * Fix changing project directories
 * Change how the name of the project is show in the menu
