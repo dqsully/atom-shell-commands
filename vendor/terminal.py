@@ -33,11 +33,11 @@ class configure (object):
 		self.temp = os.path.join(self.temp, 'winex_%02d.cmd'%self.tick)
 		self.cygwin = ''
 		self.GetShortPathName = None
-	
+
 	def call (self, args, stdin = None):
 		p = subprocess.Popen(args, shell = False,
 				stdin = subprocess.PIPE,
-				stdout = subprocess.PIPE, 
+				stdout = subprocess.PIPE,
 				stderr = subprocess.PIPE)
 		if stdin != None:
 			p.stdin.write(stdin)
@@ -61,7 +61,7 @@ class configure (object):
 			if os.path.exists(path):
 				return path
 		return None
-		
+
 	def escape (self, path):
 		path = path.replace('\\', '\\\\').replace('"', '\\"')
 		return path.replace('\'', '\\\'')
@@ -80,7 +80,7 @@ class configure (object):
 		p.stdin.close()
 		text = p.stdout.read()
 		p.stdout.close()
-		code = p.wait() 
+		code = p.wait()
 		#print text
 		return code, text
 
@@ -151,7 +151,7 @@ class configure (object):
 		osascript.append('end tell')
 		osascript.append('end tell')
 		return self.darwin_osascript(osascript)
-	
+
 	def unix_escape (self, argument, force = False):
 		argument = argument.replace('\\', '\\\\')
 		argument = argument.replace('"', '\\"')
@@ -225,7 +225,7 @@ class configure (object):
 		pathname = self.win32_path_short(self.temp)
 		os.system('start cmd /C %s'%(pathname))
 		return 0
-	
+
 	def darwin_open_xterm (self, title, script, profile = None):
 		command = []
 		for line in script:
@@ -324,7 +324,7 @@ class configure (object):
 			command.append('--login')
 		self.call(command + ['-i', scriptname])
 		return 0
-	
+
 	def cygwin_open_mintty (self, title, script, profile = None):
 		filename = os.path.split(self.temp)[-1]
 		scriptname = os.path.join('/tmp', filename)
@@ -362,7 +362,7 @@ class configure (object):
 		if sys.platform == 'cygwin':
 			return self.cygwin_win_path(path)
 		return os.path.abspath(os.path.join(self.cygwin, path[1:]))
-	
+
 	# use bash in cygwin to execute script and return output
 	def win32_cygwin_execute (self, script, login = False):
 		if not self.cygwin:
@@ -495,7 +495,7 @@ class Terminal (object):
 		self.unix = sys.platform[:3] != 'win' and True or False
 		self.cygwin_login = False
 		self.post_command = ''
-	
+
 	def __win32_open_terminal (self, terminal, title, script, profile):
 		if terminal in ('', 'system', 'dos', 'win', 'windows', 'command', 'cmd'):
 			self.config.win32_open_console(title, script)
@@ -592,7 +592,7 @@ class Terminal (object):
 			if terminal in ('dos', 'win', 'cmd', 'command', 'system', 'windows'):
 				return True
 		return False
-	
+
 	def execute (self, terminal, title, script, cwd, wait, profile):
 		lines = [ line for line in script ]
 		windows = self.check_windows(terminal)
@@ -700,7 +700,7 @@ def main(argv = None, shellscript = None):
 			break
 	terminal = Terminal()
 	help = terminal.open_terminal('', '', None, '')
-	text = 'available terminal: ' 
+	text = 'available terminal: '
 	text += ', '.join(help)
 	import optparse
 	if len(cmds) == 0 and len(args) > 0 and stdin == False:
@@ -714,7 +714,7 @@ def main(argv = None, shellscript = None):
 			description = desc)
 	parser.add_option('-t', '--title', dest = 'title', default = None,
 			help = 'title of new window')
-	parser.add_option('-m', '--terminal', dest = 'terminal', default = None, 
+	parser.add_option('-m', '--terminal', dest = 'terminal', default = None,
 			help = text)
 	parser.add_option('-p', '--profile', dest = 'profile', default = None,
 			help = 'terminal profile')
@@ -770,7 +770,7 @@ def main(argv = None, shellscript = None):
 		command = ' '.join(command)
 		if opts.post:
 			terminal.post_command = opts.post
-		terminal.run_command(opts.terminal, opts.title, command, 
+		terminal.run_command(opts.terminal, opts.title, command,
 			opts.cwd, opts.wait, opts.profile)
 	return 0
 
@@ -779,7 +779,7 @@ def main(argv = None, shellscript = None):
 # run clever for vimmake
 #----------------------------------------------------------------------
 def vimtool():
-	
+
 	return 0
 
 
@@ -801,9 +801,6 @@ if __name__ == '__main__':
 		args = [ 'terminal', '-w', '--terminal=cmd', '--stdin' ]
 		main(args)
 		return 0
-	
+
 	#test2()
 	main()
-
-
-
