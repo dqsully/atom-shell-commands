@@ -95,10 +95,11 @@ The `options` field can contain the following properties:
 | file | *[optional]* | File path (relative or absolute) to copy the output of the command to |
 | mode | *[optional]* | Mode for starting the process |
 | context | *[optional]* | String of flags indicating which circumstances the command can be run under |
-
+| closeWhenFinished | *[optional]* | Close message panel after the command has finished. The message panel will be kept open if the command exits with an error code, i.e. something else than `0` |
 The `options.mode` field string can be any of the following:
 
 | Type | Description |
+|------|-------------|
 | `silent` | Same as setting `silent` option to true |
 | `terminal` | Opens the command in a separate window |
 | `window` | Same as `terminal` |
