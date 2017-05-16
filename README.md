@@ -96,6 +96,7 @@ The `options` field can contain the following properties:
 | mode | *[optional]* | Mode for starting the process |
 | context | *[optional]* | String of flags indicating which circumstances the command can be run under |
 | closeWhenFinished | *[optional]* | Close message panel after the command has finished. The message panel will be kept open if the command exits with an error code, i.e. something else than `0` |
+
 The `options.mode` field string can be any of the following:
 
 | Type | Description |
