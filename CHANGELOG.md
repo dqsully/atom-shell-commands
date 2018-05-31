@@ -1,3 +1,6 @@
+# 2.2.4 - 2018/5/31
+* Add `keepOpenOnMatch` option to fix issue #10
+
 # 2.2.2 - 2017/3/25
 * Fix the output from a program which uses both stdout and stderr
 
